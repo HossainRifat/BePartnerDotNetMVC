@@ -1,0 +1,84 @@
+﻿<link href="~/Content/em_style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{
+    Layout = "~/Views/Employee/EM_layout.cshtml";
+}
+
+<div class="row">
+    <!--Left side-->
+    <div class="column1">
+
+        <center>
+            <a class="btn btn-success radious" style="width:250px;margin-bottom:10px;margin-top:10px;" href="@Url.Action("Index","J_Employee")">Dashboard</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("AccountInformation","J_Employee")">Account Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("AdminInformation","J_Employee")">Admin Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("EmployeeInformation","J_Employee")"> Employee Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("InvestorInformation","J_Employee")">Investor Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("EnterprenurInformation","J_Employee")">Enterprenrur Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("TaskInformation","J_Employee")">Task Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("Messege_receivedMessege_received","J_Employee")">Messege</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("Logout","J_Employee")">Logout</a>
+
+        </center>
+    </div>
+
+    <!--rigth side-->
+    <div class="column2">
+        <h2>Investor Information (@ViewBag.x)</h2>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>NID</th>
+                                <th>Organization</th>
+                                <th>TIN</th>
+                                <th>Website</th>
+                                <th>Address</th>
+                                <th>Account Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var IN in Model)
+                            {
+                                <tr>
+                                    <td>@IN.FirstName</td>
+                                    <td>@IN.LastName</td>
+                                    <td>@IN.In_Email</td>
+                                    <td>@IN.Phone</td>
+                                    <td>@IN.Nid</td>
+                                    <td>@IN.OrgName</td>
+                                    <td>@IN.Tin</td>
+                                    <td>@IN.OrgSite</td>
+                                    <td>@IN.OrgLocation</td>
+                                    <td>@IN.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+

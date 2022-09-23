@@ -1,0 +1,64 @@
+﻿
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css">
+<center>
+    <div class="loginbody">
+        
+
+
+        <form action="" method="post">
+            <img src="~/Img/title_logo.png" alt="" height="100" width="100">
+            <h2 class="text-center">Login</h2>
+            <table class="inLogin">
+
+
+
+                <tr>
+                    <td>
+                        <p class="logins">Email:</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="email" name="In_Email" class="form-control" value="@(Model!=null? Model.In_Email:"")">
+
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <p class="logins">Password:</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="password" id="passShow" name="Password" class="form-control" value="@(Model!=null? Model.Password:"")"></td>
+                </tr>
+                <tr>
+                    <td class="text-danger">@Html.Raw(ViewBag.Message)</td>
+                </tr>
+                <tr>
+
+                    <td><input type="checkbox" onclick="showPass()" name="pwd"> Show Password</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="remember"> Remember me.
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><input type="submit" value="Login" name="submit" class="btn btn-success in-login-button">
+                </tr>
+                <tr>
+
+                    <td><input type="reset" value="Reset" name="Reset" class="btn btn-warning in-login-button"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</center>
+
+
+
+@Scripts.Render("~/Content/InValid.js")

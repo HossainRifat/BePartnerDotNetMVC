@@ -1,0 +1,75 @@
+﻿<link href="~/Content/em_style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{
+    Layout = "~/Views/Employee/EM_layout.cshtml";
+}
+
+<div class="row">
+    <!--Left side-->
+    <div class="column1">
+
+        <center>
+            <a class="btn btn-success radious" style="width:250px;margin-bottom:10px;margin-top:10px;" href="@Url.Action("Index","J_Employee")">Dashboard</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("AccountInformation","J_Employee")">Account Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("AdminInformation","J_Employee")">Admin Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("EmployeeInformation","J_Employee")"> Employee Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("InvestorInformation","J_Employee")">Investor Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("EnterprenurInformation","J_Employee")">Enterprenrur Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("TaskInformation","J_Employee")">Task Information</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("Messege_received","J_Employee")">Messege</a>
+
+            <a class="btn btn-success radious" style="width: 250px; margin-bottom: 10px" href="@Url.Action("Logout","J_Employee")">Logout</a>
+
+        </center>
+    </div>
+
+    <!--rigth side-->
+    <div class="column2">
+        <h2>Messege</h2>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <a class="btn btn-outline-info radious" style="width: 150px; margin-bottom: 10px" href="@Url.Action("Messege_add","J_Employee")">Add messege</a>
+
+                <a class="btn btn-outline-success radious" style="width: 150px; margin-bottom: 10px" href="@Url.Action("Messege_sent","J_Employee")">Sent</a>
+
+                <a class="btn btn-primary radious" style="width: 150px; margin-bottom: 10px" href="@Url.Action("Messege_received","J_Employee")">Received</a>
+
+
+            </div>
+
+            @foreach (var RR in Model)
+            {
+                <div class="card border-bottom-success">
+                    <br />
+                    <h5>&emsp;Subject: @RR.Title</h5>
+                    <h6>&emsp;Messege ID: @RR.ReportId</h6>
+                    <h6>&emsp;Sender: @RR.sender</h6>
+                    <label>&emsp;Messege:</label>
+                    <p>&emsp;@RR.Description</p>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

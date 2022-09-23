@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_In_Layout.cshtml";
+}
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script*@
+<html>
+<head>
+    <script src="~/Content/jquery-1.10.2.min.js"></script>
+   @* <link href="~/Content/Site.css" rel="stylesheet" type="text/css">*@
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+    <style>
+        .sresult {
+            border-radius: 7px;
+            background-color: rgb(67, 16, 101);
+            top: 55px;
+            height: 45px;
+            width: 420px;
+            position: fixed-top;
+            margin-top: 100px;
+            margin-left: 0px;
+            display: none;
+        }
+
+        #show {
+            padding-top: 100px;
+            margin: 10px;
+        }
+    </style>
+
+    <div class="input-group shadow rounded-lg" style="padding:10px 20px 10px;margin-bottom:-30px;">
+        @*<div class="form-outline">
+                <input id="searchInput" type="text" style="width:250px;" placeholder="Search" class="form-control" />
+            </div>
+            <button onclick="InvestorMvcSearch()" type="button" class="btn btn-primary" style="width:70px;">
+                <i class="fas fa-search"></i>
+            </button>*@
+        <div class="src">
+            <input type="search" class="form-control" id="inputSearch" style="float:right;" />
+            <a id="result" href="">Suggestion</a>
+        </div>
+        <div class=" align-items-center" style="margin-left:62%;margin-top:1%; ">
+            <a href="@Url.Action("InStartups","InHome",new {Id = "AtoZ"})"><i class='fas fa-sort-alpha-down'></i></a>
+            <a href="@Url.Action("InStartups","InHome",new {Id = "ZtoA"})"><i class='fas fa-sort-alpha-down-alt' style="padding-left:10px;"></i></a>
+        </div>
+    </div>
+
+    <script>
+
+
+        $("#inputSearch").keyup(function () {
+            var searchValue = $("#inputSearch").val();
+            console.log(searchValue);
+            var expression = RegExp(searchValue, "i");
+
+            $.ajax({
+                type: "GET",
+                url: "/InHome/EN_Search/" + searchValue,
+                success: function (rresponse) {
+                    var data = JSON.parse(rresponse);
+                    $.each(data, function (key, item) {
+                        var d = item.Company_Name;
+                        console.log(item.Company_Name);
+                        //return { label: item.Company_Name, value: item.Company_Name };
+                        $("#result").text(d);
+                        $("#result").attr("href", "/InHome/InBusinessDetails/" + d)
+                    })
+
+                }
+            })
+
+        })
+
+    </script>
+
+    <div class="Instartups-container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="start-s col-md-12">
+                @foreach (var i in Model)
+                {
+                    <div class="searchDi">
+                        <div class="row p-2 bg-white border In-StartupShadow sear rounded">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"></div>
+                            <div class="col-md-6 mt-1 in-list-width">
+                                <h3 class="text-success">@i.Company_Name</h3>
+                                <div class="d-flex flex-row">
+                                    @*<div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>*@
+                                </div>
+                                <div class="mt-1 mb-1 spec-1"><span>@i.Category</span><span class="dot"></span><span>@i.Feature1_Title</span><span class="dot"></span><span>@i.Feature2_Title<br></span></div>
+                                <div class="mt-1 mb-1 spec-1"><span>@i.Feature3_Title</span><span class="dot"></span><span>@i.Feature4_Title</span>@*<span class="dot"></span><span>Casual<br></span>*@</div>
+                                <p class="text-justify para mb-0">@i.Description<br><br></p>
+                            </div>
+                            <div class="sa_align-items-center align-content-center col-md-3 border-left mt-1">
+                                <div class="d-flex flex-row sa_align-items-center">
+                                    <h4 class="mr-1">$@i.Valuation</h4><span class="text-danger">(valuation)</span>
+                                </div>
+                                <div class="d-flex flex-row sa_align-items-center">
+                                    <h6 class="mr-1">Asking Amount: @i.Asking_Amount$</h6><span class="strike-text"></span>
+                                </div>
+                                <div class="d-flex flex-row sa_align-items-center">
+                                    <h7 class="mr-1">For @i.Asking_Share% of the company.</h7><span class="strike-text"></span>
+                                </div>
+                                <div class="d-flex flex-row sa_align-items-center">
+                                    <h6 class="text-success mr-1">Total Profit: @i.Total_Profit$</h6>
+                                </div>
+
+                                <div class="d-flex flex-column mt-4">
+                                    <br><br>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("InBusinessDetails","InHome",new {Id = i.Company_Name})">Details</a>
+                                    @*<button class="btn btn-outline-primary btn-sm mt-2" type="button">Send Offer</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

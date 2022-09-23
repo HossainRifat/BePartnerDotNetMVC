@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="051708f502184aa296962c03cfa3c36c" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Investor" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Admin" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Entrepreneur" Width="1.5" PointX="3.75" PointY="4.375" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Idea" Width="1.5" PointX="9" PointY="5.625" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Message" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Login" Width="1.5" PointX="11.75" PointY="3.75" />
+        <AssociationConnector Association="bePartnerCentralDatabaseModel1.FK_Ideas_Entrepreneurs" />
+        <AssociationConnector Association="bePartnerCentralDatabaseModel1.FK_Ideas_in_Investors" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Employee" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Report" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="bePartnerCentralDatabaseModel1.Task" Width="1.5" PointX="3.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_In_Layout.cshtml";
+}
+ <link href="~/Content/Site.css" rel="stylesheet" type="text/css">
+<div class="jumbotron" style="background-color:black">
+    <h1>BEPARTNER</h1>
+    <p class="lead">Find The Best Entrepreneur To Invest.</p>
+    <p><a href="@Url.Action("InStartups","InHome")" class="btn btn-primary btn-lg">Find Startups &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>News</h2>
+        @foreach (var i in Model)
+        {
+            <div class="searchDi">
+                <div class="row p-2 bg-white border In-StartupShadow sear rounded">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="~/Img/@(i.Img)"></div>
+                    <div class="col-md-6 mt-1 in-list-width">
+                        <h3 class="text-success">@i.Company_Name Got InvestMent.</h3>
+                        <div class="d-flex flex-row">
+                            @*<div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>*@
+                        </div>
+                        <div class="mt-1 mb-1 spec-1"><span>@i.Category</span><span class="dot"></span><span>@i.Feature1_Title</span><span class="dot"></span><span>@i.Feature2_Title<br></span></div>
+                        <div class="mt-1 mb-1 spec-1"><span>@i.Feature3_Title</span><span class="dot"></span><span>@i.Feature4_Title</span>@*<span class="dot"></span><span>Casual<br></span>*@</div>
+                        <p class="text-justify para mb-0">@i.Description<br><br></p>
+                    </div>
+                    <div class="sa_align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row sa_align-items-center">
+                            <h4 class="mr-1">$@i.Valuation</h4><span class="text-danger">(valuation)</span>
+                        </div>
+                        <div class="d-flex flex-row sa_align-items-center">
+                            <h6 class="mr-1">Investment Amount: @i.Asking_Amount$</h6><span class="strike-text"></span>
+                        </div>
+                        <div class="d-flex flex-row sa_align-items-center">
+                            <h7 class="mr-1">For @i.Asking_Share% of the company.</h7><span class="strike-text"></span>
+                        </div>
+                        <div class="d-flex flex-row sa_align-items-center">
+                            <h6 class="text-success mr-1">Total Profit: @i.Total_Profit$</h6>
+                        </div>
+
+                        <div class="d-flex flex-column mt-4">
+                            <br><br>
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("InBusinessDetails","InHome",new {Id = i.Company_Name})">Details</a>
+                            @*<button class="btn btn-outline-primary btn-sm mt-2" type="button">Send Offer</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    @*<div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+</div>
